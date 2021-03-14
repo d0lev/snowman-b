@@ -6,8 +6,11 @@ CXXFLAGS=-std=c++2a
 OBJECTS=snowman.o
 SOURCES=snowman.cpp
 
-run: test
+run: test prog1
 	./$^
+
+prog1: main.o $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o prog1
 
 test: TestRunner.o StudentTest1.o StudentTest2.o StudentTest3.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o test
